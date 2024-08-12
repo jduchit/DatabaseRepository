@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Search Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 data-lang data-lang-en="Data HUB USFQ" data-lang-es="Centro de Datos USFQ">Data HUB USFQ</h1>
+            <div class="lang-switch">
+                <button onclick="switchLanguage('en')">EN</button>
+                <button onclick="switchLanguage('es')">ES</button>
+            </div>
+        </header>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search..." data-lang data-lang-en="Search..." data-lang-es="Buscar...">
+            <button onclick="performSearch()" data-lang data-lang-en="Search" data-lang-es="Buscar">Search</button>
+        </div>
+        <div class="flex-container">
+            <div class="filters">
+                <h2 data-lang data-lang-en="Advanced Search" data-lang-es="Búsqueda Avanzada">Advanced Search</h2>
+                <label>
+                    <input type="checkbox" id="journal"> <span data-lang data-lang-en="Journal Article" data-lang-es="Artículo de Revista">Journal Article</span>
+                </label>
+                <label>
+                    <input type="checkbox" id="conference"> <span data-lang data-lang-en="Conference Paper" data-lang-es="Ponencia de Conferencia">Conference Paper</span>
+                </label>
+                <label>
+                    <input type="checkbox" id="working"> <span data-lang data-lang-en="Working Paper" data-lang-es="Documento de Trabajo">Working Paper</span>
+                </label>
+                <label>
+                    <input type="checkbox" id="report"> <span data-lang data-lang-en="Report" data-lang-es="Informe">Report</span>
+                </label>
+                <label>
+                    <input type="checkbox" id="book"> <span data-lang data-lang-en="Book/Chapter" data-lang-es="Libro/Capítulo">Book/Chapter</span>
+                </label>
+                <label>
+                    <input type="checkbox" id="thesis"> <span data-lang data-lang-en="Thesis/Dissertation" data-lang-es="Tesis/Disertación">Thesis/Dissertation</span>
+                </label>
+            </div>
+            <div class="results">
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th data-lang data-lang-en="Title" data-lang-es="Título">Title</th>
+                            <th data-lang data-lang-en="Author" data-lang-es="Autor">Author</th>
+                            <th data-lang data-lang-en="Last Update" data-lang-es="Última Actualización">Last Update</th>
+                            <th data-lang data-lang-en="Tags" data-lang-es="Etiquetas">Tags</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Search results will be displayed here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 USFQ. <span data-lang data-lang-en="All rights reserved." data-lang-es="Todos los derechos reservados.">All rights reserved.</span></p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
