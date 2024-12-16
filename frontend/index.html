@@ -51,17 +51,18 @@
                             <th data-lang data-lang-en="Tags" data-lang-es="Etiquetas">Tags</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tableBody">
                         <!-- Search results will be displayed here -->
                     </tbody>
                 </table>
+                <p id="noResultsMessage" style="display: none;" data-lang data-lang-en="No results found." data-lang-es="No se encontraron resultados.">No results found.</p>
             </div>
         </div>
     </div>
     <div class="footer">
         <p>&copy; 2024 USFQ. <span data-lang data-lang-en="All rights reserved." data-lang-es="Todos los derechos reservados.">All rights reserved.</span></p>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/papaparse/5.3.0/papaparse.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

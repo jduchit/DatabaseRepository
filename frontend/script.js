@@ -1,4 +1,41 @@
-let data = []; // Variable to store the data from Excel
+let data = []; // Variable to store the data from CSV
+
+// Function to load data from CSV
+function loadData() {
+    fetch('https://raw.githubusercontent.com/jduchit/DatabaseRepository/631b0cac5b7723e836c56dfb7b558068f0835a5d/Data/OpenDataHrefsBases.csv')
+        .then(response => response.text())
+        .then(csvText => {
+            const rows = csvText.split('\n');
+            const headers = rows[0].split(',');
+            data = rows.slice(1).map(row => {
+                const values = row.split(',');
+                let obj = {};
+                headers.forEach((header, index) => {
+                    obj[header.trim()] = values[index].trim();
+                });
+                return obj;
+            });
+            displayData(data); // Call function to display data in table
+        })
+        .catch(error => console.error('Error loading CSV data:', error));
+}
+
+// Function to display data in the table
+function displayData(data) {
+    const resultsTableBody = document.querySelector('#resultsTable tbody');
+    resultsTableBody.innerHTML = '';
+
+    data.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td><a href="${item.HrefBases}" target="_blank">${item.MetaTitle}</a></td>
+            <td>${item.Author}</td>
+            <td>${item['Last Update']}</td>
+            <td>${item.Tags}</td>
+        `;
+        resultsTableBody.appendChild(row);
+    });
+}
 
 // Function to perform search based on input and filters
 function performSearch() {
@@ -49,14 +86,7 @@ function switchLanguage(lang) {
     });
 }
 
-// Load data from Excel file
+// Load data from CSV file when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('data.xlsx')
-        .then(response => response.arrayBuffer())
-        .then(dataBuffer => {
-            const workbook = XLSX.read(dataBuffer, { type: 'array' });
-            const firstSheetName = workbook.SheetNames[0];
-            const worksheet = workbook.Sheets[firstSheetName];
-            data = XLSX.utils.sheet_to_json(worksheet);
-        });
+    loadData();
 });
